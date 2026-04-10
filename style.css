@@ -1178,7 +1178,16 @@ ul { list-style: none; }
     .contact-form { padding: 24px; }
     .contact h2 { font-size: 1.8rem; }
 
-    .reviews-grid .testimonial { min-width: 280px; }
+    .reviews-grid {
+        flex-direction: column; gap: 16px;
+        overflow-x: visible; scroll-snap-type: none;
+        max-height: none;
+    }
+    .reviews-grid .testimonial {
+        min-width: 100%; max-width: 100%;
+        padding: 24px; flex-shrink: 1;
+    }
+    .testimonial blockquote { font-size: 0.9rem; margin-bottom: 14px; }
     .google-reviews-header { flex-direction: column; gap: 12px; text-align: center; }
 
     .chat-window { width: calc(100vw - 32px); right: -8px; bottom: 68px; }
