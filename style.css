@@ -1165,7 +1165,11 @@ ul { list-style: none; }
     .calc-layouts { grid-template-columns: repeat(2, 1fr); }
     .calc-form-grid { grid-template-columns: 1fr; }
     #calc-content { padding: 24px 20px; }
+    .calc-nav { flex-direction: column; }
+    .calc-nav .btn { width: 100%; justify-content: center; }
     .calc-result-price { font-size: 2.2rem; }
+    .calc-result-cta { flex-direction: column; }
+    .calc-result-cta .btn { width: 100%; }
     .pricing-items { gap: 8px; }
     .calc-cable-toggle { padding: 14px 16px; }
 
