@@ -120,7 +120,7 @@ ul { list-style: none; }
     position: relative;
     min-height: 100vh;
     display: flex; align-items: center;
-    background-color: #0a1a0a;
+    background-color: #0a0a0a;
     overflow: hidden;
 }
 .hero-bg-image {
@@ -136,11 +136,11 @@ ul { list-style: none; }
 }
 .hero-bg-image::before {
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to right, #0a1a0a 0%, rgba(10,26,10,0.7) 30%, rgba(10,26,10,0.1) 100%);
+    background: linear-gradient(to right, #0a0a0a 0%, rgba(10,10,10,0.7) 30%, rgba(10,10,10,0.1) 100%);
 }
 .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to right, #0a1a0a 0%, #0a1a0a 35%, transparent 65%);
+    background: linear-gradient(to right, #0a0a0a 0%, rgba(10,10,10,0.95) 35%, transparent 65%);
     z-index: 1;
 }
 .hero-content-wrap {
@@ -1078,7 +1078,7 @@ ul { list-style: none; }
         background-position: center 30%;
     }
     .hero-bg-image::before {
-        background: linear-gradient(to top, #0a1a0a 0%, rgba(10,26,10,0.85) 50%, rgba(10,26,10,0.3) 100%);
+        background: linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.3) 100%);
     }
     .hero-overlay { display: none; }
     .hero-content-wrap {
