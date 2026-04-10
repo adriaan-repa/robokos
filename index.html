@@ -64,7 +64,7 @@
                 </div>
                 <div class="hero-trust-divider"></div>
                 <div class="hero-trust-item">
-                    <strong>500+</strong>
+                    <strong>248+</strong>
                     <span>inštalácií</span>
                 </div>
                 <div class="hero-trust-divider"></div>
@@ -79,7 +79,7 @@
     <div class="trust-bar">
         <div class="container trust-bar-inner">
             <div class="trust-item">
-                <strong class="counter" data-target="500">0</strong>
+                <strong class="counter" data-target="248">0</strong>
                 <span>inštalácií</span>
             </div>
             <div class="trust-item">
@@ -303,50 +303,6 @@
     </div>
 </section>
 
-<!-- ============================================
-     ABOUT US
-     ============================================ -->
-<section class="about" id="about">
-    <div class="container about-grid">
-        <div class="about-visual fade-in">
-            <!-- IMAGE: about-team -->
-            <img src="images/team.png" alt="Tím RoboKos" id="img-about">
-            <div class="about-card">
-                <strong>RoboKos s.r.o.</strong>
-                <span>Založená v roku 2015</span>
-            </div>
-        </div>
-        <div class="about-content fade-in fade-in-delay">
-            <p class="section-label">O nás</p>
-            <h2 class="section-heading left">Kto sme</h2>
-            <p>Sme <strong>RoboKos s.r.o.</strong> zo Zlatých Moraviec — autorizovaný predajca a servisný partner Husqvarna a ďalších popredných značiek záhradnej techniky.</p>
-            <p>Špecializujeme sa na <strong>profesionálnu inštaláciu robotických kosačiek</strong> s použitím zakopávača káblov. Za roky práce sme nainštalovali stovky kosačiek po celom Slovensku.</p>
-            <div class="about-details">
-                <div class="about-detail">
-                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>Továrenská 1404/27, 953 01 Zlaté Moravce</span>
-                </div>
-                <div class="about-detail">
-                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    <span>Po–Pia: 8:00–17:00, So: 8:00–12:00</span>
-                </div>
-                <div class="about-detail">
-                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    <span>037 / 642 3456</span>
-                </div>
-                <div class="about-detail">
-                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <span>info@robokos.sk</span>
-                </div>
-            </div>
-            <div class="about-badges">
-                <div class="about-badge">Autorizovaný Husqvarna partner</div>
-                <div class="about-badge">Inštalácia do 24 hodín</div>
-                <div class="about-badge">Vrátane sobôt</div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ============================================
      WHAT'S INCLUDED + WARRANTY
@@ -826,7 +782,6 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const el = entry.target;
             const target = +el.dataset.target;
-            const suffix = target === 500 ? '+' : target === 10 ? '+' : '%';
             let current = 0;
             const step = Math.ceil(target / 40);
             const timer = setInterval(() => {
@@ -835,9 +790,9 @@ const counterObserver = new IntersectionObserver((entries) => {
                     current = target;
                     clearInterval(timer);
                 }
-                el.textContent = current + (current === target ? (target === 98 ? '' : '') : '');
+                el.textContent = current;
                 if (current === target) {
-                    if (target === 500 || target === 10) el.textContent = current + '+';
+                    if (target === 248 || target === 10) el.textContent = current + '+';
                 }
             }, 30);
             counterObserver.unobserve(el);
