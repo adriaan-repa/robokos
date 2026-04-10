@@ -1,5 +1,5 @@
 // ============================================
-// PROTECHNIK Price Calculator
+// RoboKos Price Calculator
 // ============================================
 
 (function() {
@@ -117,7 +117,8 @@
         width: 20,
         height: 15,
         obstacles: 0,
-        pavementCrossings: 0,  // number of crossings (each = 2m because cable crosses twice)
+        pavementCrossings: 0,
+        hasOwnCable: false,
         city: null,
         customKm: 0,
     };
@@ -141,7 +142,7 @@
     }
 
     function getPavementMeters() {
-        return state.pavementCrossings * 2; // each crossing = 2 passes through pavement
+        return state.pavementCrossings * 2;
     }
 
     function calculatePrice() {
@@ -151,7 +152,7 @@
 
         const setup = PRICES.setup;
         const laying = cable.total * PRICES.cablePerMeter;
-        const material = cable.total * PRICES.cableMaterial;
+        const material = state.hasOwnCable ? 0 : cable.total * PRICES.cableMaterial;
         const travel = distance * PRICES.travelPerKm;
         const pavement = pavMeters * PRICES.pavementPerMeter;
 
@@ -161,10 +162,10 @@
             cable,
             distance,
             pavMeters,
+            hasOwnCable: state.hasOwnCable,
         };
     }
 
-    // Build summary text for the contact form
     function getSummaryText() {
         const price = calculatePrice();
         const layout = LAYOUTS.find(l => l.id === state.layout);
@@ -175,6 +176,7 @@
             `Rozmery: ${state.width} × ${state.height} m (${state.width * state.height} m²)`,
             `Prekážky: ${state.obstacles}`,
             `Prechody cez chodník: ${state.pavementCrossings}`,
+            `Vlastný kábel: ${state.hasOwnCable ? 'Áno' : 'Nie'}`,
             `Lokalita: ${cityName} (${getDistance()} km)`,
             `Kábel: ${price.cable.total} m (obvodový ${price.cable.boundary} m + vodiaci ${price.cable.guide} m)`,
             `Orientačná cena: ${Math.round(price.total)} €`,
@@ -234,7 +236,7 @@
         if (next) next.addEventListener('click', () => { state.step = 2; render(); });
     }
 
-    // Step 2: Dimensions & obstacles
+    // Step 2: Dimensions, obstacles & cable ownership
     function renderStep2(el) {
         const area = state.width * state.height;
         const perimeter = getPerimeter();
@@ -288,6 +290,19 @@
                 </div>
             </div>
 
+            <div class="calc-cable-toggle">
+                <label class="calc-toggle-label">
+                    <span class="calc-toggle-text">
+                        <strong>Máte vlastný inštalačný kábel?</strong>
+                        <span class="calc-field-hint" style="margin-top: 2px;">Ak áno, neúčtujeme materiál za kábel (úspora ${PRICES.cableMaterial} €/m).</span>
+                    </span>
+                    <span class="calc-switch">
+                        <input type="checkbox" id="calc-own-cable" ${state.hasOwnCable ? 'checked' : ''}>
+                        <span class="calc-switch-slider"></span>
+                    </span>
+                </label>
+            </div>
+
             <div class="calc-nav">
                 <button class="btn btn-ghost calc-back">Späť</button>
                 <button class="btn btn-primary calc-next">Ďalej</button>
@@ -320,10 +335,14 @@
                 if (action === 'dec-pav') state.pavementCrossings = Math.max(state.pavementCrossings - 1, 0);
                 el.querySelector('#calc-obs').textContent = state.obstacles;
                 el.querySelector('#calc-pav').textContent = state.pavementCrossings;
-                // Update hint text
                 const hint = el.querySelectorAll('.calc-field-hint')[1];
                 if (hint) hint.textContent = `Kábel prechádza chodníkom 2× (tam a späť) = ${state.pavementCrossings * 2} m á ${PRICES.pavementPerMeter} €/m.`;
             });
+        });
+
+        // Cable toggle
+        el.querySelector('#calc-own-cable').addEventListener('change', function() {
+            state.hasOwnCable = this.checked;
         });
 
         el.querySelector('.calc-back').addEventListener('click', () => { state.step = 1; render(); });
@@ -415,10 +434,18 @@
                             </td>
                             <td>${Math.round(price.laying)} €</td>
                         </tr>
+                        ${price.hasOwnCable ? `
+                        <tr>
+                            <td>
+                                Materiál — kábel
+                                <small>Vlastný kábel zákazníka</small>
+                            </td>
+                            <td class="calc-free">0 €</td>
+                        </tr>` : `
                         <tr>
                             <td>Materiál — kábel (${price.cable.total} m × ${PRICES.cableMaterial} €)</td>
                             <td>${Math.round(price.material)} €</td>
-                        </tr>
+                        </tr>`}
                         ${price.travel > 0 ? `
                         <tr>
                             <td>
@@ -447,6 +474,7 @@
 
                     <div class="calc-result-notes">
                         <p><strong>Cena nezahŕňa:</strong> robotickú kosačku (prineste vlastnú alebo vám ju dodáme)</p>
+                        ${price.hasOwnCable ? '<p><strong>Kábel:</strong> použijeme váš vlastný inštalačný kábel</p>' : ''}
                         <p><strong>Presná cena:</strong> bude stanovená po obhliadke pozemku</p>
                         <p><strong>Termín:</strong> inštaláciu vieme realizovať do 24 hodín od objednávky, vrátane sobôt</p>
                     </div>
@@ -474,7 +502,6 @@
             if (textarea) {
                 textarea.value = getSummaryText();
             }
-            // Pre-fill city in the select if applicable
             const select = contactSection.querySelector('select');
             if (select) {
                 const area = state.width * state.height;
@@ -492,6 +519,6 @@
         render();
     });
 
-    // Expose getSummaryText for AI chatbot
-    window.PROTECHNIK_CALC = { getSummaryText, calculatePrice, state };
+    // Expose for AI chatbot
+    window.ROBOKOS_CALC = { getSummaryText, calculatePrice, state };
 })();
