@@ -1063,47 +1063,85 @@ ul { list-style: none; }
     .nav-links.open { transform: translateY(0); }
     .mobile-toggle { display: block; }
 
-    .hero { min-height: auto; }
-    .hero-bg-image { width: 100%; height: 300px; position: relative; }
-    .hero-bg-image::before { background: linear-gradient(to top, #0a1a0a 0%, transparent 100%); }
-    .hero-overlay { background: linear-gradient(to top, #0a1a0a 20%, transparent 60%); }
-    .hero-content-wrap { padding: 20px 0 60px; width: 100%; }
-    .hero h1 { font-size: 2.4rem; }
-    .hero-trust { gap: 12px; }
+    /* === HERO MOBILE === */
+    .hero {
+        min-height: 100vh;
+        flex-direction: column;
+    }
+    .hero-bg-image {
+        position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100%; height: 100%;
+    }
+    .hero-bg-image::before {
+        background: linear-gradient(to top, #0a1a0a 0%, rgba(10,26,10,0.6) 50%, rgba(10,26,10,0.3) 100%);
+    }
+    .hero-overlay {
+        background: linear-gradient(to top, #0a1a0a 0%, rgba(10,26,10,0.5) 40%, transparent 70%);
+    }
+    .hero-content-wrap {
+        padding: 100px 0 100px;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        min-height: 100vh;
+    }
+    .hero-content { max-width: 100%; padding-bottom: 40px; }
+    .hero h1 { font-size: 2.2rem; line-height: 1.1; }
+    .hero-sub { font-size: 1rem; line-height: 1.65; margin-bottom: 24px; }
+    .hero-cta { margin-bottom: 24px; }
+    .hero-cta .btn { padding: 12px 22px; font-size: 0.9rem; }
+    .hero-phone { margin-bottom: 16px; }
+    .hero-phone a { font-size: 1rem; }
+    .hero-trust { gap: 14px; }
     .hero-trust-divider { display: none; }
     .hero-trust-item { font-size: 0.8rem; }
 
-    /* Timeline becomes vertical */
+    /* Trust bar */
+    .trust-bar { padding: 16px 0; }
+    .trust-bar-inner { gap: 12px; justify-content: center; }
+    .trust-item strong { font-size: 1.4rem; }
+    .trust-item span { font-size: 0.7rem; }
+
+    /* === TIMELINE MOBILE === */
+    .process { padding: 80px 0; }
+    .section-heading { font-size: 1.8rem; }
+    .section-sub { font-size: 0.95rem; margin-bottom: 40px; }
+
     .timeline-line { left: 22px; }
     .timeline-step {
-        grid-template-columns: 1fr;
-        padding-left: 60px; gap: 16px;
+        flex-direction: column;
+        padding-left: 60px;
+        gap: 12px;
+        margin-bottom: 36px;
     }
     .timeline-dot {
-        position: absolute; left: 0; grid-column: 1;
+        position: absolute; left: 0; top: 0;
+        transform: none;
         width: 44px; height: 44px;
     }
-    .timeline-step:nth-of-type(odd) .timeline-card,
-    .timeline-step:nth-of-type(even) .timeline-card,
-    .timeline-step:nth-of-type(odd) .timeline-text,
-    .timeline-step:nth-of-type(even) .timeline-text {
-        grid-column: 1; text-align: left;
+    .timeline-step:hover .timeline-dot {
+        transform: scale(1.1);
     }
-    .timeline-card, .timeline-text { grid-row: auto; }
+    .timeline-card,
+    .timeline-text { width: 100% !important; order: unset !important; margin-left: 0 !important; text-align: left !important; }
+    .timeline-step:nth-of-type(odd) .timeline-card,
+    .timeline-step:nth-of-type(even) .timeline-card { order: 2 !important; }
+    .timeline-step:nth-of-type(odd) .timeline-text,
+    .timeline-step:nth-of-type(even) .timeline-text { order: 1 !important; text-align: left !important; }
+    .timeline-step:nth-of-type(odd) .timeline-dot,
+    .timeline-step:nth-of-type(even) .timeline-dot { order: 0 !important; }
+    .timeline-card img { border-radius: 14px; }
 
+    /* === REST OF SECTIONS === */
     .comparison-grid { grid-template-columns: 1fr; }
     .machine-callout { flex-direction: column; text-align: center; padding: 24px; }
 
     .calc-layouts { grid-template-columns: repeat(2, 1fr); }
     .calc-form-grid { grid-template-columns: 1fr; }
-    .calc-city-grid { grid-template-columns: 1fr 1fr; }
     #calc-content { padding: 24px 20px; }
     .calc-result-price { font-size: 2.2rem; }
     .pricing-items { gap: 8px; }
-
-    .about-grid { grid-template-columns: 1fr; }
-    .about-visual { order: -1; }
-    .about-card { bottom: -12px; right: 8px; }
+    .calc-cable-toggle { padding: 14px 16px; }
 
     .included-grid { grid-template-columns: 1fr; }
     .electrical-grid { grid-template-columns: 1fr; }
@@ -1120,7 +1158,7 @@ ul { list-style: none; }
 
     .contact-grid { grid-template-columns: 1fr; }
     .contact-form { padding: 24px; }
-    .section-heading { font-size: 1.8rem; }
+    .contact h2 { font-size: 1.8rem; }
 
     .reviews-grid .testimonial { min-width: 280px; }
     .google-reviews-header { flex-direction: column; gap: 12px; text-align: center; }
@@ -1135,4 +1173,6 @@ ul { list-style: none; }
     .timeline-step { gap: 20px; }
     .comparison-grid { gap: 20px; }
     .hero h1 { font-size: 2.8rem; }
+    .hero-content-wrap { width: 100%; }
+    .hero-content { max-width: 500px; }
 }

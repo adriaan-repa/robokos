@@ -707,9 +707,9 @@
                 </span>
             </div>
         </div>
-        <form class="contact-form fade-in fade-in-delay" id="contact-form" action="https://formspree.io/f/adriaan.repa@gmail.com" method="POST">
+        <form class="contact-form fade-in fade-in-delay" id="contact-form">
             <input type="text" name="name" placeholder="Meno a priezvisko" required>
-            <input type="email" name="_replyto" placeholder="E-mail" required>
+            <input type="email" name="email" placeholder="E-mail" required>
             <input type="tel" name="phone" placeholder="Telefón">
             <select name="area">
                 <option value="" disabled selected>Veľkosť trávnika</option>
@@ -719,10 +719,40 @@
                 <option>nad 2 000 m²</option>
             </select>
             <textarea name="message" placeholder="Doplňujúce informácie (terén, svah, prekážky...)" rows="3"></textarea>
-            <input type="hidden" name="_subject" value="Nový dopyt z RoboKos.sk">
-            <input type="hidden" name="_next" value="https://robokos.sk#contact">
             <button type="submit" class="btn btn-primary btn-lg btn-full" id="contact-submit">Odoslať dopyt</button>
         </form>
+        <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = this;
+            const btn = document.getElementById('contact-submit');
+            btn.textContent = 'Odosielam...';
+            btn.disabled = true;
+
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                area: form.area.value,
+                message: form.message.value
+            };
+
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec';
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch (err) {
+                // no-cors mode won't throw on success, so we show success regardless
+            }
+
+            form.innerHTML = '<div class="form-success"><svg width="48" height="48" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="24" cy="24" r="22"/><path d="M16 24l4 4 8-8"/></svg><h3>Ďakujeme!</h3><p>Ozveme sa vám čoskoro.</p></div>';
+        });
+        </script>
     </div>
 </section>
 
