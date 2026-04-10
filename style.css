@@ -1046,6 +1046,9 @@ ul { list-style: none; }
 }
 .chat-input-wrap button:hover { background: #15803d; transform: scale(1.05); }
 
+/* ===== STICKY PHONE (hidden on desktop) ===== */
+.sticky-phone { display: none; }
+
 /* ===== FOOTER ===== */
 .footer { padding: 36px 0; border-top: 1px solid rgba(0,0,0,0.04); }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; }
@@ -1206,6 +1209,22 @@ ul { list-style: none; }
     .chat-widget { bottom: 16px; right: 16px; }
 
     .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+
+    /* Sticky phone bar */
+    .sticky-phone {
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+        background: rgba(22, 163, 74, 0.95);
+        backdrop-filter: blur(12px);
+        padding: 12px 24px;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    }
+    .sticky-phone a {
+        display: flex; align-items: center; gap: 10px;
+        color: #fff; font-size: 1.05rem; font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+    .chat-widget { bottom: 60px; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
