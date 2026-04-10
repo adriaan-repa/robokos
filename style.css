@@ -1213,18 +1213,25 @@ ul { list-style: none; }
     /* Sticky phone bar */
     .sticky-phone {
         position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-        background: rgba(22, 163, 74, 0.95);
-        backdrop-filter: blur(12px);
-        padding: 12px 24px;
-        display: flex; align-items: center; justify-content: center;
+        display: flex; align-items: stretch;
         box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
     }
     .sticky-phone a {
-        display: flex; align-items: center; gap: 10px;
-        color: #fff; font-size: 1.05rem; font-weight: 700;
-        letter-spacing: 0.02em;
+        flex: 1;
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        color: #fff; font-size: 0.92rem; font-weight: 700;
+        padding: 14px 12px;
+        letter-spacing: 0.01em;
     }
-    .chat-widget { bottom: 60px; }
+    .sticky-phone-call {
+        background: rgba(22, 163, 74, 0.95);
+        backdrop-filter: blur(12px);
+    }
+    .sticky-phone-price {
+        background: rgba(26, 26, 46, 0.95);
+        backdrop-filter: blur(12px);
+    }
+    .chat-widget { bottom: 64px; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
