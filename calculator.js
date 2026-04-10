@@ -5,13 +5,16 @@
 (function() {
     const PRICES = {
         setup: 150,
-        cablePerMeter: 1,       // laying labor
-        cableMaterial: 0.8,     // cable itself
-        travelPerKm: 0.8,      // round trip from Zlaté Moravce
-        pavementPerMeter: 10,   // crossing hard surfaces
+        cablePerMeter: 1,
+        cableMaterial: 0.8,
+        travelPerKm: 0.8,
+        pavementPerMeter: 10,
     };
 
-    // Garden layout presets with SVG diagrams
+    // Zlaté Moravce coordinates
+    const HOME_LAT = 48.3892;
+    const HOME_LNG = 18.3967;
+
     const LAYOUTS = [
         {
             id: 'simple',
@@ -89,28 +92,6 @@
         }
     ];
 
-    // Slovak cities with approximate distances from Zlaté Moravce
-    const CITIES = [
-        { name: 'Zlaté Moravce', km: 0 },
-        { name: 'Nitra', km: 30 },
-        { name: 'Levice', km: 35 },
-        { name: 'Topoľčany', km: 35 },
-        { name: 'Tlmače / Hronský Beňadik', km: 25 },
-        { name: 'Žiar nad Hronom', km: 50 },
-        { name: 'Banská Bystrica', km: 90 },
-        { name: 'Bratislava', km: 130 },
-        { name: 'Trnava', km: 95 },
-        { name: 'Trenčín', km: 110 },
-        { name: 'Žilina', km: 170 },
-        { name: 'Prievidza', km: 80 },
-        { name: 'Martin', km: 150 },
-        { name: 'Zvolen', km: 75 },
-        { name: 'Poprad', km: 220 },
-        { name: 'Košice', km: 280 },
-        { name: 'Prešov', km: 290 },
-        { name: 'Iné (zadám km)', km: -1 },
-    ];
-
     let state = {
         step: 1,
         layout: null,
@@ -119,9 +100,73 @@
         obstacles: 0,
         pavementCrossings: 0,
         hasOwnCable: false,
-        city: null,
-        customKm: 0,
+        location: null, // { name, zip, lat, lng, km }
     };
+
+    // Debounce helper
+    function debounce(fn, ms) {
+        let timer;
+        return function(...args) { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, args), ms); };
+    }
+
+    // Geocode a ZIP code or address in Slovakia using Nominatim
+    async function geocodeAddress(query) {
+        const cleanQuery = query.replace(/\s+/g, '');
+        const isZip = /^\d{3}\s?\d{2}$/.test(query.trim());
+
+        let url;
+        if (isZip) {
+            url = `https://nominatim.openstreetmap.org/search?postalcode=${cleanQuery}&country=sk&format=json&limit=5&addressdetails=1&accept-language=sk`;
+        } else {
+            url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query + ', Slovensko')}&format=json&limit=8&addressdetails=1&accept-language=sk`;
+        }
+
+        const res = await fetch(url, {
+            headers: { 'User-Agent': 'RoboKos-Calculator/1.0' }
+        });
+        const data = await res.json();
+
+        return data
+            .filter(r => r.address && (r.address.country_code === 'sk'))
+            .map(r => {
+                const a = r.address;
+                const town = a.city || a.town || a.village || a.municipality || a.county || '';
+                const zip = a.postcode || '';
+                const name = town ? `${zip} ${town}`.trim() : r.display_name.split(',').slice(0, 2).join(',');
+                return {
+                    name,
+                    zip,
+                    town,
+                    lat: parseFloat(r.lat),
+                    lng: parseFloat(r.lon),
+                };
+            })
+            // Deduplicate by town name
+            .filter((item, i, arr) => arr.findIndex(x => x.town === item.town && x.zip === item.zip) === i);
+    }
+
+    // Get actual road distance from Zlaté Moravce using OSRM
+    async function getRoadDistance(lat, lng) {
+        const url = `https://router.project-osrm.org/route/v1/driving/${HOME_LNG},${HOME_LAT};${lng},${lat}?overview=false`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+            const distanceKm = Math.round(data.routes[0].distance / 1000);
+            return distanceKm;
+        }
+        // Fallback: straight-line distance * 1.35
+        return Math.round(haversine(HOME_LAT, HOME_LNG, lat, lng) * 1.35);
+    }
+
+    // Haversine formula for fallback
+    function haversine(lat1, lon1, lat2, lon2) {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
 
     function getPerimeter() {
         return 2 * (state.width + state.height);
@@ -137,8 +182,7 @@
     }
 
     function getDistance() {
-        if (state.city && state.city.km >= 0) return state.city.km;
-        return state.customKm;
+        return state.location ? state.location.km : 0;
     }
 
     function getPavementMeters() {
@@ -159,9 +203,7 @@
         return {
             setup, laying, material, travel, pavement,
             total: setup + laying + material + travel + pavement,
-            cable,
-            distance,
-            pavMeters,
+            cable, distance, pavMeters,
             hasOwnCable: state.hasOwnCable,
         };
     }
@@ -169,7 +211,7 @@
     function getSummaryText() {
         const price = calculatePrice();
         const layout = LAYOUTS.find(l => l.id === state.layout);
-        const cityName = state.city ? state.city.name : '—';
+        const locName = state.location ? state.location.name : '—';
         return [
             `--- KALKULÁCIA ---`,
             `Tvar: ${layout ? layout.name : '—'}`,
@@ -177,7 +219,7 @@
             `Prekážky: ${state.obstacles}`,
             `Prechody cez chodník: ${state.pavementCrossings}`,
             `Vlastný kábel: ${state.hasOwnCable ? 'Áno' : 'Nie'}`,
-            `Lokalita: ${cityName} (${getDistance()} km)`,
+            `Lokalita: ${locName} (${getDistance()} km)`,
             `Kábel: ${price.cable.total} m (obvodový ${price.cable.boundary} m + vodiaci ${price.cable.guide} m)`,
             `Orientačná cena: ${Math.round(price.total)} €`,
         ].join('\n');
@@ -236,7 +278,7 @@
         if (next) next.addEventListener('click', () => { state.step = 2; render(); });
     }
 
-    // Step 2: Dimensions, obstacles & cable ownership
+    // Step 2: Dimensions, obstacles & cable
     function renderStep2(el) {
         const area = state.width * state.height;
         const perimeter = getPerimeter();
@@ -309,7 +351,6 @@
             </div>
         `;
 
-        // Sliders
         const wSlider = el.querySelector('#calc-width');
         const hSlider = el.querySelector('#calc-height');
         const updateSliders = () => {
@@ -325,7 +366,6 @@
         wSlider.addEventListener('input', updateSliders);
         hSlider.addEventListener('input', updateSliders);
 
-        // Steppers
         el.querySelectorAll('.calc-stepper-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const action = btn.dataset.action;
@@ -340,7 +380,6 @@
             });
         });
 
-        // Cable toggle
         el.querySelector('#calc-own-cable').addEventListener('change', function() {
             state.hasOwnCable = this.checked;
         });
@@ -349,45 +388,124 @@
         el.querySelector('.calc-next').addEventListener('click', () => { state.step = 3; render(); });
     }
 
-    // Step 3: Location
+    // Step 3: Location via ZIP code search
     function renderStep3(el) {
         el.innerHTML = `
             <h3 class="calc-step-title">Kde sa nachádza vaša záhrada?</h3>
-            <p class="calc-step-desc">Doprava sa účtuje ${PRICES.travelPerKm} €/km (spiatočne) zo Zlatých Moraviec.</p>
+            <p class="calc-step-desc">Zadajte PSČ alebo názov obce. Vypočítame vzdialenosť po ceste zo Zlatých Moraviec.</p>
 
-            <div class="calc-city-grid">
-                ${CITIES.map(c => `
-                    <button class="calc-city-btn ${state.city && state.city.name === c.name ? 'selected' : ''}" data-city="${c.name}" data-km="${c.km}">
-                        <strong>${c.name}</strong>
-                        ${c.km >= 0 ? `<span>${c.km} km</span>` : '<span>vlastná vzdialenosť</span>'}
-                    </button>
-                `).join('')}
+            <div class="calc-zip-search">
+                <div class="calc-zip-input-wrap">
+                    <svg width="20" height="20" fill="none" stroke="#9ca3af" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="calc-zip-input" class="calc-input" placeholder="Zadajte PSČ alebo názov obce (napr. 949 01 alebo Nitra)" autocomplete="off" value="${state.location ? state.location.name : ''}">
+                    <div class="calc-zip-spinner" id="calc-spinner" style="display:none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                </div>
+                <div class="calc-zip-results" id="calc-zip-results"></div>
             </div>
 
-            ${state.city && state.city.km === -1 ? `
-                <div class="calc-field" style="max-width: 300px; margin: 20px auto;">
-                    <label>Vzdialenosť zo Zlatých Moraviec (km)</label>
-                    <input type="number" id="calc-custom-km" min="0" max="500" value="${state.customKm}" class="calc-input">
+            ${state.location ? `
+            <div class="calc-location-selected" id="calc-location-card">
+                <div class="calc-location-icon">
+                    <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
+                <div class="calc-location-info">
+                    <strong>${state.location.name}</strong>
+                    <span>${state.location.km} km po ceste zo Zlatých Moraviec</span>
+                    <span class="calc-location-cost">Doprava: ${state.location.km === 0 ? 'Zadarmo' : Math.round(state.location.km * PRICES.travelPerKm) + ' €'}</span>
+                </div>
+                <button class="calc-location-clear" id="calc-clear-location" title="Zmeniť">
+                    <svg width="18" height="18" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
             ` : ''}
 
             <div class="calc-nav">
                 <button class="btn btn-ghost calc-back">Späť</button>
-                <button class="btn btn-primary calc-next" ${!state.city ? 'disabled' : ''}>Zobraziť cenu</button>
+                <button class="btn btn-primary calc-next" ${!state.location ? 'disabled' : ''}>Zobraziť cenu</button>
             </div>
         `;
 
-        el.querySelectorAll('.calc-city-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                state.city = { name: btn.dataset.city, km: +btn.dataset.km };
-                render();
-            });
-        });
+        const input = el.querySelector('#calc-zip-input');
+        const resultsDiv = el.querySelector('#calc-zip-results');
+        const spinner = el.querySelector('#calc-spinner');
 
-        const customInput = el.querySelector('#calc-custom-km');
-        if (customInput) {
-            customInput.addEventListener('input', () => {
-                state.customKm = +customInput.value;
+        // If location already selected, hide input
+        if (state.location) {
+            input.parentElement.style.display = 'none';
+        }
+
+        const doSearch = debounce(async () => {
+            const query = input.value.trim();
+            if (query.length < 2) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            spinner.style.display = 'flex';
+            resultsDiv.innerHTML = '';
+
+            try {
+                const results = await geocodeAddress(query);
+
+                if (results.length === 0) {
+                    resultsDiv.innerHTML = '<div class="calc-zip-empty">Nenašli sa žiadne výsledky. Skúste iné PSČ alebo názov obce.</div>';
+                } else {
+                    resultsDiv.innerHTML = results.map((r, i) => `
+                        <button class="calc-zip-result" data-index="${i}">
+                            <svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>${r.name}</span>
+                        </button>
+                    `).join('');
+
+                    resultsDiv.querySelectorAll('.calc-zip-result').forEach((btn, i) => {
+                        btn.addEventListener('click', async () => {
+                            const selected = results[i];
+                            resultsDiv.innerHTML = '<div class="calc-zip-loading">Počítam vzdialenosť po ceste...</div>';
+                            spinner.style.display = 'flex';
+
+                            try {
+                                const km = await getRoadDistance(selected.lat, selected.lng);
+                                state.location = {
+                                    name: selected.name,
+                                    zip: selected.zip,
+                                    lat: selected.lat,
+                                    lng: selected.lng,
+                                    km: km,
+                                };
+                                render();
+                            } catch (err) {
+                                // Fallback to straight-line
+                                const km = Math.round(haversine(HOME_LAT, HOME_LNG, selected.lat, selected.lng) * 1.35);
+                                state.location = {
+                                    name: selected.name,
+                                    zip: selected.zip,
+                                    lat: selected.lat,
+                                    lng: selected.lng,
+                                    km: km,
+                                };
+                                render();
+                            }
+                        });
+                    });
+                }
+            } catch (err) {
+                resultsDiv.innerHTML = '<div class="calc-zip-empty">Chyba pri vyhľadávaní. Skúste to znova.</div>';
+            }
+
+            spinner.style.display = 'none';
+        }, 400);
+
+        input.addEventListener('input', doSearch);
+        input.addEventListener('focus', () => { if (input.value.trim().length >= 2) doSearch(); });
+
+        // Clear location
+        const clearBtn = el.querySelector('#calc-clear-location');
+        if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+                state.location = null;
+                render();
             });
         }
 
@@ -399,6 +517,7 @@
     function renderStep4(el) {
         const price = calculatePrice();
         const layout = LAYOUTS.find(l => l.id === state.layout);
+        const locName = state.location ? state.location.name : '—';
 
         el.innerHTML = `
             <h3 class="calc-step-title">Orientačná cenová ponuka</h3>
@@ -450,7 +569,7 @@
                         <tr>
                             <td>
                                 Doprava (${price.distance} km × ${PRICES.travelPerKm} €)
-                                <small>Spiatočne zo Zlatých Moraviec</small>
+                                <small>${locName} — po ceste zo Zlatých Moraviec</small>
                             </td>
                             <td>${Math.round(price.travel)} €</td>
                         </tr>` : `
@@ -493,15 +612,12 @@
         `;
 
         el.querySelector('.calc-back').addEventListener('click', () => { state.step = 3; render(); });
-        el.querySelector('.calc-restart').addEventListener('click', () => { state.step = 1; state.layout = null; render(); });
+        el.querySelector('.calc-restart').addEventListener('click', () => { state.step = 1; state.layout = null; state.location = null; render(); });
 
-        // Connect to contact form
         el.querySelector('.calc-to-form').addEventListener('click', () => {
             const contactSection = document.getElementById('contact');
             const textarea = contactSection.querySelector('textarea');
-            if (textarea) {
-                textarea.value = getSummaryText();
-            }
+            if (textarea) textarea.value = getSummaryText();
             const select = contactSection.querySelector('select');
             if (select) {
                 const area = state.width * state.height;
@@ -514,11 +630,6 @@
         });
     }
 
-    // Init
-    document.addEventListener('DOMContentLoaded', () => {
-        render();
-    });
-
-    // Expose for AI chatbot
+    document.addEventListener('DOMContentLoaded', () => { render(); });
     window.ROBOKOS_CALC = { getSummaryText, calculatePrice, state };
 })();
