@@ -275,7 +275,14 @@
         });
 
         const next = el.querySelector('.calc-next');
-        if (next) next.addEventListener('click', () => { state.step = 2; render(); });
+        if (next) next.addEventListener('click', () => {
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                event: 'calculator_start',
+                calc_layout: state.layout
+            });
+            state.step = 2; render();
+        });
     }
 
     // Step 2: Dimensions, obstacles & cable
@@ -519,6 +526,18 @@
         const layout = LAYOUTS.find(l => l.id === state.layout);
         const locName = state.location ? state.location.name : '—';
 
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            event: 'calculator_complete',
+            calc_layout: state.layout,
+            calc_area: state.width * state.height,
+            calc_cable_total: price.cable.total,
+            calc_has_own_cable: state.hasOwnCable,
+            calc_location: locName,
+            calc_distance_km: price.distance,
+            calc_price: Math.round(price.total)
+        });
+
         el.innerHTML = `
             <h3 class="calc-step-title">Orientačná cenová ponuka</h3>
             <p class="calc-step-desc">Na základe vašich údajov sme vypočítali približnú cenu inštalácie.</p>
@@ -615,6 +634,14 @@
         el.querySelector('.calc-restart').addEventListener('click', () => { state.step = 1; state.layout = null; state.location = null; render(); });
 
         el.querySelector('.calc-to-form').addEventListener('click', () => {
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                event: 'calculator_to_form',
+                calc_price: Math.round(price.total),
+                calc_layout: state.layout,
+                calc_location: locName
+            });
+
             const contactSection = document.getElementById('contact');
             const textarea = contactSection.querySelector('textarea');
             if (textarea) textarea.value = getSummaryText();
