@@ -1,0 +1,12 @@
+{
+  "name": "protechnik-website",
+  "private": true,
+  "description": "PROTECHNIK s.r.o. website with automated Google Reviews scraper",
+  "scripts": {
+    "scrape": "node scrape-reviews.js",
+    "serve": "npx serve ."
+  },
+  "dependencies": {
+    "playwright": "^1.59.1"
+  }
+}

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboKos – Profesionálna inštalácia robotických kosačiek | Zlaté Moravce</title>
+    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="#" class="logo">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <rect width="36" height="36" rx="8" fill="#16a34a"/>
+                <path d="M8 22c2-6 6-10 10-10s8 4 10 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="18" cy="24" r="3" fill="white"/>
+            </svg>
+            <span>Robo<strong>Kos</strong></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#process">Ako to funguje</a></li>
+            <li><a href="#calculator">Cenová kalkulačka</a></li>
+            <li><a href="#benefits">Výhody</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li class="nav-phone"><a href="tel:+421376423456"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 037 / 642 3456</a></li>
+            <li><a href="#contact" class="btn btn-nav">Objednať do 24h</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ============================================
+     A — ATTENTION: Hero
+     ============================================ -->
+<section class="hero">
+    <div class="hero-bg-image" style="background-image: url('images/hero.png');"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content-wrap">
+        <div class="hero-content fade-in">
+            <h1>Inštalácia robotickej<br>kosačky do 24h</h1>
+            <p class="hero-sub">Profesionálna inštalácia zakopávačom káblov. Objednajte dnes — nainštalujeme zajtra. Aj v sobotu.</p>
+            <div class="hero-cta">
+                <a href="#calculator" class="btn btn-primary btn-lg">Vypočítať cenu</a>
+                <a href="#process" class="btn btn-ghost">Ako to funguje ↓</a>
+            </div>
+            <div class="hero-phone">
+                <a href="tel:+421376423456">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    037 / 642 3456
+                </a>
+            </div>
+            <div class="hero-trust">
+                <div class="hero-trust-item">
+                    <span class="hero-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    <span>4.4/5 na Google</span>
+                </div>
+                <div class="hero-trust-divider"></div>
+                <div class="hero-trust-item">
+                    <strong>500+</strong>
+                    <span>inštalácií</span>
+                </div>
+                <div class="hero-trust-divider"></div>
+                <div class="hero-trust-item">
+                    <strong>10+</strong>
+                    <span>rokov skúseností</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Trust bar inside hero -->
+    <div class="trust-bar">
+        <div class="container trust-bar-inner">
+            <div class="trust-item">
+                <strong class="counter" data-target="500">0</strong>
+                <span>inštalácií</span>
+            </div>
+            <div class="trust-item">
+                <strong class="counter" data-target="10">0</strong>
+                <span>rokov skúseností</span>
+            </div>
+            <div class="trust-item">
+                <strong class="counter" data-target="98">0</strong>
+                <span>% spokojnosť</span>
+            </div>
+            <div class="trust-item">
+                <strong>5</strong>
+                <span>značiek kosačiek</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     I — INTEREST: How it works
+     ============================================ -->
+<section class="process" id="process">
+    <div class="container">
+        <p class="section-label">Postup inštalácie</p>
+        <h2 class="section-heading">Inštalácia zakopávačom káblov</h2>
+        <p class="section-sub">Kábel ukladáme 5 cm pod povrch špecializovaným strojom — bez poškodenia trávnika.</p>
+
+        <div class="timeline">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-step fade-in">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-card">
+                    <img src="images/step-1.png" alt="Vyznačenie plochy" id="img-step-1">
+                </div>
+                <div class="timeline-text">
+                    <h3>Vyznačenie plochy</h3>
+                    <p>Spoločne naplánujeme kde bude kosačka pracovať, zohľadníme prekážky, úzke miesta a oddelené plochy.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step fade-in">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-text">
+                    <h3>Výber miesta stanice</h3>
+                    <p>Nabíjaciu stanicu umiestnime na rovný povrch, ideálne v strede pozemku, min. 4 m od prekážok, s prístupom k elektrike.</p>
+                </div>
+                <div class="timeline-card">
+                    <img src="images/step-2.png" alt="Výber miesta stanice" id="img-step-2">
+                </div>
+            </div>
+
+            <div class="timeline-step fade-in">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-card">
+                    <img src="images/step-3.png" alt="Uloženie káblov" id="img-step-3">
+                </div>
+                <div class="timeline-text">
+                    <h3>Uloženie káblov</h3>
+                    <p>Špecializovaný stroj uloží kábel 5 cm pod povrch na zarastenom trávniku. Pri novom trávniku kladieme ručne.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step fade-in">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-text">
+                    <h3>Pripojenie stanice</h3>
+                    <p>Nabíjaciu stanicu pripojíme, otestujeme spojenie obvodového káblu a stanicu pevne upevníme.</p>
+                </div>
+                <div class="timeline-card">
+                    <img src="images/step-4.png" alt="Pripojenie stanice" id="img-step-4">
+                </div>
+            </div>
+
+            <div class="timeline-step fade-in">
+                <div class="timeline-dot">5</div>
+                <div class="timeline-card">
+                    <img src="images/step-5.png" alt="Spustenie" id="img-step-5">
+                </div>
+                <div class="timeline-text">
+                    <h3>Spustenie kosačky</h3>
+                    <p>Vykonáme nastavenie, otestujeme parkovanie v stanici, nastavíme časy a plochy kosenia a spustíme zariadenie.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     WHY MACHINE — Comparison section
+     ============================================ -->
+<section class="why-machine" id="why-machine">
+    <div class="container">
+        <p class="section-label">Naša technológia</p>
+        <h2 class="section-heading">Prečo zakopávač káblov?</h2>
+        <p class="section-sub">Väčšina firiem položí kábel na povrch a pripevní kolíkmi. My ho zakopeme strojom pod trávnik.</p>
+
+        <div class="comparison-grid fade-in">
+            <!-- Surface method -->
+            <div class="comparison-card comparison-bad">
+                <div class="comparison-header bad">
+                    <svg width="28" height="28" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="14" cy="14" r="12"/><path d="M9 9l10 10M19 9L9 19"/></svg>
+                    <h3>Kábel na povrchu</h3>
+                </div>
+                <!-- IMAGE: comparison-surface -->
+                <img src="images/compare-surface.png" alt="Kábel na povrchu" id="img-compare-surface">
+                <ul class="comparison-list">
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M6 6l6 6M12 6L6 12"/></svg>
+                        Viditeľný kábel na trávniku
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M6 6l6 6M12 6L6 12"/></svg>
+                        Riziko poškodenia pri vertikutácii
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M6 6l6 6M12 6L6 12"/></svg>
+                        Kolíky sa uvoľňujú
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M6 6l6 6M12 6L6 12"/></svg>
+                        Nebezpečenstvo pre deti a zvieratá
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M6 6l6 6M12 6L6 12"/></svg>
+                        Neestetický vzhľad
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Machine method -->
+            <div class="comparison-card comparison-good">
+                <div class="comparison-header good">
+                    <svg width="28" height="28" fill="none" stroke="#16a34a" stroke-width="2.5"><circle cx="14" cy="14" r="12"/><path d="M9 14l3 3 7-7"/></svg>
+                    <h3>Zakopávač káblov</h3>
+                    <span class="comparison-badge">Naše riešenie</span>
+                </div>
+                <!-- IMAGE: comparison-machine -->
+                <img src="images/compare-machine.png" alt="Zakopávač káblov" id="img-compare-machine">
+                <ul class="comparison-list">
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg>
+                        Kábel neviditeľný pod povrchom
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg>
+                        Chránený pred poškodením
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg>
+                        Žiadne kolíky ani údržba
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg>
+                        Bezpečné pre celú rodinu
+                    </li>
+                    <li>
+                        <svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg>
+                        Čistý a profesionálny výsledok
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Callout -->
+        <div class="machine-callout fade-in">
+            <!-- IMAGE: machine-detail -->
+            <img src="images/machine-detail.png" alt="Zakopávací stroj" class="callout-img" id="img-machine-detail">
+            <div class="callout-text">
+                <h4>Ako funguje zakopávač?</h4>
+                <p>Špecializovaný stroj vytvorí úzky rez v trávniku a uloží kábel presne 5 cm pod povrch. Trávnik sa zaceľí do niekoľkých dní a kábel je úplne neviditeľný. Minimálny zásah, maximálna ochrana.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     PRICE CALCULATOR
+     ============================================ -->
+<section class="calculator" id="calculator">
+    <div class="container">
+        <p class="section-label">Cenová kalkulačka</p>
+        <h2 class="section-heading">Koľko stojí inštalácia?</h2>
+        <p class="section-sub">Vypočítajte si orientačnú cenu za 60 sekúnd. Presná ponuka po obhliadke.</p>
+
+        <div class="calc-wrapper">
+            <div class="calc-progress">
+                <div class="calc-progress-step active current"><span>1</span> Tvar</div>
+                <div class="calc-progress-step"><span>2</span> Rozmery</div>
+                <div class="calc-progress-step"><span>3</span> Lokalita</div>
+                <div class="calc-progress-step"><span>4</span> Cena</div>
+            </div>
+            <div id="calc-content"></div>
+        </div>
+
+        <div class="calc-pricing-note">
+            <h4>Ako sa skladá cena?</h4>
+            <div class="pricing-items">
+                <div class="pricing-item">
+                    <strong>150 €</strong>
+                    <span>Základný setup</span>
+                </div>
+                <div class="pricing-item pricing-plus">+</div>
+                <div class="pricing-item">
+                    <strong>1 €/m</strong>
+                    <span>Uloženie kábla</span>
+                </div>
+                <div class="pricing-item pricing-plus">+</div>
+                <div class="pricing-item">
+                    <strong>0,80 €/m</strong>
+                    <span>Materiál (kábel)</span>
+                </div>
+                <div class="pricing-item pricing-plus">+</div>
+                <div class="pricing-item">
+                    <strong>0,80 €/km</strong>
+                    <span>Doprava (spiatočne)</span>
+                </div>
+            </div>
+            <p class="pricing-extra">Prechod cez chodník/betón: <strong>10 €/m</strong> (kábel prechádza 2× — tam aj späť)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     ABOUT US
+     ============================================ -->
+<section class="about" id="about">
+    <div class="container about-grid">
+        <div class="about-visual fade-in">
+            <!-- IMAGE: about-team -->
+            <img src="images/team.png" alt="Tím RoboKos" id="img-about">
+            <div class="about-card">
+                <strong>RoboKos s.r.o.</strong>
+                <span>Založená v roku 2015</span>
+            </div>
+        </div>
+        <div class="about-content fade-in fade-in-delay">
+            <p class="section-label">O nás</p>
+            <h2 class="section-heading left">Kto sme</h2>
+            <p>Sme <strong>RoboKos s.r.o.</strong> zo Zlatých Moraviec — autorizovaný predajca a servisný partner Husqvarna a ďalších popredných značiek záhradnej techniky.</p>
+            <p>Špecializujeme sa na <strong>profesionálnu inštaláciu robotických kosačiek</strong> s použitím zakopávača káblov. Za roky práce sme nainštalovali stovky kosačiek po celom Slovensku.</p>
+            <div class="about-details">
+                <div class="about-detail">
+                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Továrenská 1404/27, 953 01 Zlaté Moravce</span>
+                </div>
+                <div class="about-detail">
+                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <span>Po–Pia: 8:00–17:00, So: 8:00–12:00</span>
+                </div>
+                <div class="about-detail">
+                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>037 / 642 3456</span>
+                </div>
+                <div class="about-detail">
+                    <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>info@robokos.sk</span>
+                </div>
+            </div>
+            <div class="about-badges">
+                <div class="about-badge">Autorizovaný Husqvarna partner</div>
+                <div class="about-badge">Inštalácia do 24 hodín</div>
+                <div class="about-badge">Vrátane sobôt</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     WHAT'S INCLUDED + WARRANTY
+     ============================================ -->
+<section class="included" id="included">
+    <div class="container">
+        <p class="section-label">Čo získate</p>
+        <h2 class="section-heading">Čo zahŕňa inštalácia</h2>
+        <div class="included-grid">
+            <div class="included-card included-yes">
+                <h3>V cene inštalácie</h3>
+                <ul>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Obhliadka a konzultácia</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Návrh optimálnych trás</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Obvodový kábel (materiál + práca)</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Vodiaci kábel</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Inštalácia nabíjacej stanice</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Nastavenie a programovanie</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Testovanie a odovzdanie</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Zaškolenie ovládania</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M4 9l4 4 8-8"/></svg> Záruka na inštaláciu 24 mesiacov</li>
+                </ul>
+            </div>
+            <div class="included-card included-extra">
+                <h3>Za príplatok / voliteľné</h3>
+                <ul>
+                    <li><svg width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M9 6v6M9 14v0"/></svg> Robotická kosačka (dodáme alebo prinesiete vlastnú)</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M9 6v6M9 14v0"/></svg> Prechod cez betón / chodník (10 €/m)</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M9 6v6M9 14v0"/></svg> Elektrická prípojka (zabezpečí si zákazník — odporučíme elektrikára)</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M9 6v6M9 14v0"/></svg> Sezónna údržba a servis</li>
+                    <li><svg width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M9 6v6M9 14v0"/></svg> Zimná konzervácia</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     ELECTRICAL CONNECTION
+     ============================================ -->
+<section class="electrical" id="electrical">
+    <div class="container electrical-grid">
+        <div class="electrical-content fade-in">
+            <p class="section-label">Dôležité informácie</p>
+            <h2 class="section-heading left">Elektrická prípojka</h2>
+            <p class="electrical-intro">Nabíjacia stanica potrebuje prístup k elektrike. Tu sú odporúčania pre správnu prípravu:</p>
+
+            <div class="electrical-items">
+                <div class="electrical-item">
+                    <div class="electrical-icon">
+                        <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Vonkajšia zásuvka 230V</h4>
+                        <p>Vodotesná zásuvka (IP44 alebo vyššia) v dosahu max. 10 m od plánovaného miesta stanice. Odporúčame krytie IP55.</p>
+                    </div>
+                </div>
+                <div class="electrical-item">
+                    <div class="electrical-icon">
+                        <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                    </div>
+                    <div>
+                        <h4>Samostatný istič</h4>
+                        <p>Odporúčame samostatný okruh s ističom 10A typu B a prúdovým chráničom (FI) 30 mA.</p>
+                    </div>
+                </div>
+                <div class="electrical-item">
+                    <div class="electrical-icon">
+                        <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+                    </div>
+                    <div>
+                        <h4>Kabeláž</h4>
+                        <p>Pre vonkajší rozvod použite kábel CYKY 3×1,5 mm² v chráničke uloženej v zemi. Pripojenie musí realizovať elektrikár.</p>
+                    </div>
+                </div>
+                <div class="electrical-item">
+                    <div class="electrical-icon">
+                        <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Nemáte zásuvku?</h4>
+                        <p>Nie sme elektrikári, ale radi vám odporučíme spoľahlivého elektrikára vo vašom okolí, ktorý vám zásuvku nainštaluje pred naším príchodom.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="electrical-visual fade-in fade-in-delay">
+            <!-- IMAGE: electrical -->
+            <img src="images/electrical.png" alt="Schéma elektrickej prípojky" id="img-electrical">
+        </div>
+    </div>
+</section>
+
+<!-- PREPARATION CHECKLIST -->
+<section class="preparation" id="preparation">
+    <div class="container preparation-grid">
+        <div class="preparation-content fade-in">
+            <p class="section-label">Pred inštaláciou</p>
+            <h2 class="section-heading left">Príprava záhrady</h2>
+            <p class="preparation-intro">Pre hladký priebeh inštalácie vás prosíme o prípravu:</p>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checklist-icon">
+                        <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M16 5L7.5 14l-4-4"/></svg>
+                    </div>
+                    <div>
+                        <strong>Vyrovnajte a pokosťe trávnik</strong>
+                        <p>Krátky trávnik uľahčuje prácu stroja.</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">
+                        <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M16 5L7.5 14l-4-4"/></svg>
+                    </div>
+                    <div>
+                        <strong>Upravte úzke priestory na min. 1,5 m</strong>
+                        <p>Kosačka potrebuje dostatočný priestor na prechod.</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">
+                        <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M16 5L7.5 14l-4-4"/></svg>
+                    </div>
+                    <div>
+                        <strong>Odstráňte predmety z plochy</strong>
+                        <p>Hračky, kamene a dekorácie prosím odložte.</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">
+                        <svg width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M16 5L7.5 14l-4-4"/></svg>
+                    </div>
+                    <div>
+                        <strong>Zavlažte trávnik niekoľko dní vopred</strong>
+                        <p>Mäkšia pôda uľahčí zakopanie kábla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="preparation-visual fade-in fade-in-delay">
+            <!-- IMAGE: preparation -->
+            <img src="images/preparation.png" alt="Príprava záhrady" id="img-preparation">
+        </div>
+    </div>
+</section>
+
+<!-- SUPPORTED BRANDS -->
+<section class="brands" id="brands">
+    <div class="container">
+        <p class="section-label">Podporované značky</p>
+        <h2 class="section-heading">Inštalujeme všetky značky</h2>
+        <div class="brands-grid">
+            <div class="brand-card"><img src="images/brands/husqvarna.svg" alt="Husqvarna"></div>
+            <div class="brand-card"><img src="images/brands/gardena.svg" alt="Gardena"></div>
+            <div class="brand-card"><img src="images/brands/bosch.svg" alt="Bosch"></div>
+            <div class="brand-card"><img src="images/brands/honda.svg" alt="Honda"></div>
+            <div class="brand-card"><img src="images/brands/stihl.svg" alt="STIHL"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     D — DESIRE: Benefits + Social proof
+     ============================================ -->
+<section class="benefits" id="benefits">
+    <div class="container benefits-grid">
+        <div class="benefits-visual fade-in">
+            <!-- IMAGE: benefits-lifestyle -->
+            <img src="images/lifestyle.png" alt="Rodina v záhrade" id="img-benefits">
+        </div>
+        <div class="benefits-content fade-in fade-in-delay">
+            <p class="section-label">Výhody</p>
+            <h2 class="section-heading left">Prečo robotická kosačka?</h2>
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div>
+                    <h4>Úspora času</h4>
+                    <p>Žiadne víkendy strávené kosením. Kosačka pracuje autonómne, vy relaxujete.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div>
+                    <h4>Dokonalý trávnik</h4>
+                    <p>Každodenné mikro-kosenie vytvára hustý, zdravý a rovnomerný trávnik bez zhlukov.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div>
+                    <h4>Ekologická prevádzka</h4>
+                    <p>Bez emisií, len 58 dB hluku. Mulčovanie vracia živiny do pôdy.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                    <h4>Bezpečná a spoľahlivá</h4>
+                    <p>Senzory proti kolízii, GPS ochrana a práca aj za dažďa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Google Reviews -->
+<section class="reviews" id="reviews">
+    <div class="container">
+        <p class="section-label">Google Recenzie</p>
+        <h2 class="section-heading">Čo hovoria naši zákazníci</h2>
+        <div class="google-reviews-header">
+            <div class="google-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                <span>Google Reviews</span>
+            </div>
+            <div class="google-rating">
+                <span class="google-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                <span class="google-score" id="google-score">4.4/5 (37 recenzií)</span>
+            </div>
+        </div>
+        <div class="reviews-grid" id="google-reviews-container">
+            <p class="reviews-loading">Načítavam recenzie z Google...</p>
+        </div>
+        <div class="reviews-cta">
+            <a href="https://www.google.com/maps/place/Husqvarna+-+Z%C3%A1hradn%C3%A1+Technika+%7C+PROTECHNIK+s.r.o./@48.3891972,18.3920403,17z" target="_blank" rel="noopener" class="btn btn-ghost">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                Zobraziť všetky recenzie na Google
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================
+     GUARANTEE
+     ============================================ -->
+<section class="guarantee" id="guarantee">
+    <div class="container">
+        <div class="guarantee-box">
+            <div class="guarantee-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="guarantee-content">
+                <h2>Naša garancia: Zapnite a zabudnite</h2>
+                <p class="guarantee-lead">Neodídeme, kým kosačka nefunguje na 100 %.</p>
+                <div class="guarantee-points">
+                    <div class="guarantee-point">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <span><strong>Bezchybný prvý deň</strong> — kosačka kosí, parkuje a nabíja sa správne od prvej minúty</span>
+                    </div>
+                    <div class="guarantee-point">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <span><strong>Žiadne zasekávanie</strong> — úzke priechody, rohy, svahy — všetko otestujeme pred odovzdaním</span>
+                    </div>
+                    <div class="guarantee-point">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <span><strong>Spoľahlivé parkovanie</strong> — kosačka nájde stanicu a zaparkuje na prvý pokus, vždy</span>
+                    </div>
+                    <div class="guarantee-point">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <span><strong>Zapnite a zabudnite</strong> — po našom odchode sa o kosačku nemusíte starať, jednoducho funguje</span>
+                    </div>
+                    <div class="guarantee-point">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <span><strong>Ak niečo nefunguje, vrátime sa</strong> — bezplatne opravíme čokoľvek súvisiace s inštaláciou</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="faq" id="faq">
+    <div class="container">
+        <p class="section-label">Časté otázky</p>
+        <h2 class="section-heading">Máte otázky?</h2>
+        <p class="section-sub">Tu sú odpovede na najčastejšie otázky o inštalácii robotických kosačiek.</p>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Ako dlho trvá inštalácia?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Inštalácia zvyčajne trvá 2 – 5 hodín v závislosti od veľkosti a zložitosti pozemku. Vieme ju realizovať do 24 hodín od objednávky, vrátane sobôt.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Aká veľká záhrada je vhodná?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Robotické kosačky s vodiacim káblom zvládnu plochy do 5 000 m². Pre väčšie pozemky (až 50 000 m²) sú dostupné modely s RTK/GPS navigáciou.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Zvládne kosačka svah?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Áno, väčšina modelov zvláda svahy do 35 – 45 %. Pred inštaláciou svah posúdime a odporučíme vhodný model.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Čo ak mám viac oddelených plôch?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Naplánujeme transportné trasy medzi plochami. Kosačka sa medzi nimi presúva automaticky podľa nastaveného rozvrhu.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Poškodí zakopávač môj trávnik?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Nie. Stroj vytvorí len úzky rez, ktorý sa zaceľí do 1 – 2 týždňov. Trávnik nie je výrazne poškodený a výsledok je omnoho čistejší ako pri povrchových kolíkoch.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Potrebujem mať už kosačku?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Nie. Môžete si priniesť vlastnú, alebo vám ju dodáme — sme autorizovaný predajca Husqvarna a ďalších značiek. Poradíme s výberom na základe veľkosti záhrady a rozpočtu.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Čo zahŕňa servis po inštalácii?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Ponúkame sezónnu údržbu, výmenu nožov, aktualizáciu softvéru, zimnú konzerváciu a dlhodobú technickú podporu.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Ako sa pripraviť na inštaláciu?</span>
+                    <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Stačí pokosiť a vyrovnať trávnik, odstrániť predmety z plochy, upraviť úzke priechody na min. 1,5 m a pár dní vopred trávnik zavlažiť.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     A — ACTION: Contact CTA
+     ============================================ -->
+<section class="contact" id="contact">
+    <div class="container contact-grid">
+        <div class="contact-info fade-in">
+            <p class="section-label light">Kontakt</p>
+            <h2>Objednajte dnes,<br>nainštalujeme zajtra</h2>
+            <p>Inštaláciu vieme realizovať do 24 hodín od objednávky, vrátane sobôt. Zavolajte alebo vyplňte formulár.</p>
+            <div class="contact-details">
+                <a href="tel:+421376423456">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    037 / 642 3456
+                </a>
+                <a href="mailto:info@robokos.sk">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    info@robokos.sk
+                </a>
+                <span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Továrenská 1404/27, 953 01 Zlaté Moravce
+                </span>
+                <span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Po–Pia 8:00–17:00, So 8:00–12:00
+                </span>
+            </div>
+        </div>
+        <form class="contact-form fade-in fade-in-delay" id="contact-form">
+            <input type="text" name="name" placeholder="Meno a priezvisko" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="tel" name="phone" placeholder="Telefón">
+            <select name="area">
+                <option value="" disabled selected>Veľkosť trávnika</option>
+                <option>do 500 m²</option>
+                <option>500 – 1 000 m²</option>
+                <option>1 000 – 2 000 m²</option>
+                <option>nad 2 000 m²</option>
+            </select>
+            <textarea name="message" placeholder="Doplňujúce informácie (terén, svah, prekážky...)" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary btn-lg btn-full" id="contact-submit">Odoslať dopyt</button>
+        </form>
+        <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = this;
+            const btn = document.getElementById('contact-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Odosielam...';
+            btn.disabled = true;
+
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                area: form.area.value,
+                message: form.message.value
+            };
+
+            // REPLACE_WITH_YOUR_SCRIPT_URL — see GOOGLE_APPS_SCRIPT.js
+            const SCRIPT_URL = 'REPLACE_WITH_YOUR_SCRIPT_URL';
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                form.innerHTML = '<div class="form-success"><svg width="48" height="48" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="24" cy="24" r="22"/><path d="M16 24l4 4 8-8"/></svg><h3>Ďakujeme!</h3><p>Ozveme sa vám čoskoro.</p></div>';
+            } catch (err) {
+                form.innerHTML = '<div class="form-success"><svg width="48" height="48" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="24" cy="24" r="22"/><path d="M16 24l4 4 8-8"/></svg><h3>Ďakujeme!</h3><p>Ozveme sa vám čoskoro.</p></div>';
+            }
+        });
+        </script>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <a href="#" class="logo">
+            <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+                <rect width="36" height="36" rx="8" fill="#16a34a"/>
+                <path d="M8 22c2-6 6-10 10-10s8 4 10 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="18" cy="24" r="3" fill="white"/>
+            </svg>
+            <span>Robo<strong>Kos</strong></span>
+        </a>
+        <p>&copy; 2026 RoboKos s.r.o. Továrenská 1404/27, 953 01 Zlaté Moravce. Všetky práva vyhradené.</p>
+    </div>
+</footer>
+
+<script>
+// Mobile menu
+document.querySelector('.mobile-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    this.classList.toggle('active');
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+        document.querySelector('.mobile-toggle').classList.remove('active');
+    });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+    });
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = +el.dataset.target;
+            const suffix = target === 500 ? '+' : target === 10 ? '+' : '%';
+            let current = 0;
+            const step = Math.ceil(target / 40);
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = current + (current === target ? (target === 98 ? '' : '') : '');
+                if (current === target) {
+                    if (target === 500 || target === 10) el.textContent = current + '+';
+                }
+            }, 30);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+
+<script src="calculator.js"></script>
+
+<!-- AI Chat Assistant -->
+<div class="chat-widget" id="chat-widget">
+    <button class="chat-toggle" id="chat-toggle" aria-label="Otvoriť chat">
+        <svg class="chat-icon-open" width="28" height="28" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg class="chat-icon-close" width="28" height="28" fill="none" stroke="white" stroke-width="2" style="display:none"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar-sm">
+                    <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#16a34a"/><path d="M8 22c2-6 6-10 10-10s8 4 10 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="24" r="3" fill="white"/></svg>
+                </div>
+                <div>
+                    <strong>RoboKos Asistent</strong>
+                    <span class="chat-status">Online</span>
+                </div>
+            </div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-msg chat-msg-bot">
+                <p>Ahoj! Som virtuálny asistent RoboKos. Pomôžem vám s otázkami o inštalácii robotickej kosačky.</p>
+                <p class="chat-msg-hint">Napríklad sa opýtajte:</p>
+                <div class="chat-suggestions">
+                    <button class="chat-suggestion" data-q="Koľko stojí inštalácia?">Koľko stojí inštalácia?</button>
+                    <button class="chat-suggestion" data-q="Aké značky inštalujete?">Aké značky inštalujete?</button>
+                    <button class="chat-suggestion" data-q="Ako dlho trvá inštalácia?">Ako dlho trvá inštalácia?</button>
+                    <button class="chat-suggestion" data-q="Zvládne kosačka svah?">Zvládne kosačka svah?</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-wrap">
+            <input type="text" id="chat-input" placeholder="Napíšte otázku..." autocomplete="off">
+            <button id="chat-send" aria-label="Odoslať">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="chatbot.js"></script>
+
+<!-- Google Reviews loader — reads from reviews.json (updated daily by GitHub Actions) -->
+<script>
+(function() {
+    fetch('reviews.json?v=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+            const scoreEl = document.getElementById('google-score');
+            const container = document.getElementById('google-reviews-container');
+
+            if (!data.reviews || data.reviews.length === 0) {
+                // No reviews scraped yet — show link to Google
+                scoreEl.innerHTML = '<a href="https://www.google.com/maps/place/Husqvarna+-+Z%C3%A1hradn%C3%A1+Technika+%7C+PROTECHNIK+s.r.o./@48.3891972,18.3920403,17z" target="_blank" rel="noopener" style="color:#16a34a;text-decoration:underline">Zobraziť na Google Maps</a>';
+                container.innerHTML = `
+                    <div class="reviews-placeholder">
+                        <svg width="48" height="48" fill="none" stroke="#d1d5db" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <p>Recenzie sa načítajú automaticky. Zatiaľ si ich môžete pozrieť priamo na Google.</p>
+                        <a href="https://www.google.com/maps/place/Husqvarna+-+Z%C3%A1hradn%C3%A1+Technika+%7C+PROTECHNIK+s.r.o./@48.3891972,18.3920403,17z" target="_blank" rel="noopener" class="btn btn-primary">Zobraziť recenzie na Google</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Update rating
+            const stars = '★'.repeat(Math.round(data.rating)) + '☆'.repeat(5 - Math.round(data.rating));
+            document.querySelector('.google-stars').textContent = stars;
+            scoreEl.textContent = `${data.rating}/5 (${data.totalReviews} recenzií)`;
+
+            // Render reviews
+            container.innerHTML = data.reviews.filter(r => r.rating === 5).slice(0, 6).map(r => {
+                const rStars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+                const initial = (r.author || '?')[0].toUpperCase();
+                const photoHtml = r.photo
+                    ? `<img src="${r.photo}" alt="${r.author}" class="avatar" loading="lazy">`
+                    : `<div class="avatar avatar-initial">${initial}</div>`;
+                return `
+                    <div class="testimonial fade-in">
+                        <div class="stars">${rStars}</div>
+                        <blockquote>"${r.text}"</blockquote>
+                        <div class="testimonial-author">
+                            ${photoHtml}
+                            <div>
+                                <cite>${r.author}</cite>
+                                <span class="location">${r.time || ''}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Animate new elements
+            container.querySelectorAll('.fade-in').forEach(el => {
+                if (window.IntersectionObserver) {
+                    const obs = new IntersectionObserver(entries => {
+                        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+                    }, { threshold: 0.15 });
+                    obs.observe(el);
+                } else {
+                    el.classList.add('visible');
+                }
+            });
+        })
+        .catch(() => {
+            // Fetch failed (e.g., file:// protocol) — show fallback
+            document.getElementById('google-score').innerHTML = '<a href="https://www.google.com/maps/place/Husqvarna+-+Z%C3%A1hradn%C3%A1+Technika+%7C+PROTECHNIK+s.r.o./@48.3891972,18.3920403,17z" target="_blank" rel="noopener" style="color:#16a34a">Zobraziť na Google</a>';
+            document.getElementById('google-reviews-container').innerHTML = `
+                <div class="reviews-placeholder">
+                    <svg width="48" height="48" fill="none" stroke="#d1d5db" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <p>Recenzie sa zobrazia po nasadení stránky na server.</p>
+                    <a href="https://www.google.com/maps/place/Husqvarna+-+Z%C3%A1hradn%C3%A1+Technika+%7C+PROTECHNIK+s.r.o./@48.3891972,18.3920403,17z" target="_blank" rel="noopener" class="btn btn-primary">Zobraziť recenzie na Google</a>
+                </div>
+            `;
+        });
+})();
+</script>
+
+</body>
+</html>

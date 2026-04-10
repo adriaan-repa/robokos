@@ -1,0 +1,48 @@
+name: Update Google Reviews
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (8:00 AM Slovak time)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install playwright
+          npx playwright install chromium --with-deps
+
+      - name: Run scraper
+        run: node scrape-reviews.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet reviews.json 2>/dev/null; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit updated reviews
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add reviews.json
+          git commit -m "Update Google Reviews $(date +%Y-%m-%d)"
+          git push

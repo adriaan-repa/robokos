@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.husqvarna.com)",
+      "WebFetch(domain:plattsrobotics.co.uk)",
+      "Bash(open:*)",
+      "WebFetch(domain:www.protechnik.sk)",
+      "Bash(python3:*)",
+      "Bash(echo \"Server PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8082/index.html)",
+      "Bash(npm install:*)",
+      "Bash(npx playwright:*)",
+      "Bash(node:*)",
+      "Bash(unzip -o /Users/adrianrepa/Downloads/robotic-installation.zip -d /tmp/robotic-images/)",
+      "Bash(ls:*)",
+      "Bash(rm -rf /tmp/install-images)",
+      "Bash(mkdir -p /tmp/install-images)",
+      "Bash(unzip -o /Users/adrianrepa/Downloads/installation.zip -d /tmp/install-images/)",
+      "Bash(cp /tmp/install-images/Gemini_Generated_Image_jmkagqjmkagqjmka.png /Users/adrianrepa/your-project-name/images/hero.png)",
+      "Bash(cp /tmp/install-images/Gemini_Generated_Image_kpztktkpztktkpzt.png /Users/adrianrepa/your-project-name/images/step-1.png)",
+      "Bash(cp /tmp/install-images/Gemini_Generated_Image_50nvy350nvy350nv.png /Users/adrianrepa/your-project-name/images/step-2.png)",
+      "Bash(cp /tmp/install-images/Gemini_Generated_Image_t5e9obt5e9obt5e9.png /Users/adrianrepa/your-project-name/images/step-3.png)",
+      "Bash(cp /tmp/install-images/Gemini_Generated_Image_jwbf1wjwbf1wjwbf.png /Users/adrianrepa/your-project-name/images/step-4.png)",
+      "Bash('#process')",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Husqvarna_logo.svg/320px-Husqvarna_logo.svg.png\" -o /Users/adrianrepa/your-project-name/images/brands/husqvarna.png)",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Gardena_logo.svg/320px-Gardena_logo.svg.png\" -o /Users/adrianrepa/your-project-name/images/brands/gardena.png)",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Bosch-logo.svg/320px-Bosch-logo.svg.png\" -o /Users/adrianrepa/your-project-name/images/brands/bosch.png)",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Honda_logo2.svg/320px-Honda_logo2.svg.png\" -o /Users/adrianrepa/your-project-name/images/brands/honda.png)",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Stihl_Logo.svg/320px-Stihl_Logo.svg.png\" -o /Users/adrianrepa/your-project-name/images/brands/stihl.png)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Husqvarna_logo.svg/320px-Husqvarna_logo.svg.png\" -o /Users/adrianrepa/your-project-name/images/brands/husqvarna.png)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh\\)\" -o /tmp/husq-test.png \"https://upload.wikimedia.org/wikipedia/commons/8/82/Husqvarna_logo.svg\")",
+      "WebFetch(domain:www.google.com)"
+    ]
+  }
+}
