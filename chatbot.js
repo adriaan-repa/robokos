@@ -10,7 +10,7 @@
     const KNOWLEDGE = [
         {
             keywords: ['cena', 'cenník', 'koľko', 'stojí', 'stoji', 'ceny', 'price', 'kolko'],
-            answer: 'Cena inštalácie sa skladá z:\n\n• <strong>150 €</strong> — základný setup\n• <strong>1 €/m</strong> — uloženie kábla\n• <strong>0,80 €/m</strong> — materiál (kábel)\n• <strong>0,80 €/km</strong> — doprava (spiatočne zo Zlatých Moraviec)\n• <strong>10 €/m</strong> — prechod cez chodník/betón\n\nPre presnú cenu použite <a href="#calculator">našu kalkulačku</a> alebo nás kontaktujte na <a href="tel:+421376423456">037/642 3456</a>.'
+            answer: 'Cena inštalácie sa skladá z:\n\n• <strong>150 €</strong> — základný setup\n• <strong>1 €/m</strong> — uloženie kábla\n• <strong>0,80 €/m</strong> — materiál (kábel)\n• <strong>0,80 €/km</strong> — doprava (spiatočne zo Zlatých Moraviec)\n• <strong>10 €/m</strong> — prechod cez chodník/betón\n\nPre presnú cenu použite <a href="#calculator">našu kalkulačku</a> alebo nás kontaktujte na <a href="tel:+421907854144">+421 907 854 144</a>.'
         },
         {
             keywords: ['značk', 'brand', 'husqvarna', 'gardena', 'bosch', 'honda', 'stihl', 'znack'],
@@ -18,7 +18,7 @@
         },
         {
             keywords: ['dlho', 'trvá', 'trva', 'čas', 'cas', 'hodín', 'hodin', 'kedy', 'termín', 'termin'],
-            answer: 'Inštalácia zvyčajne trvá <strong>2 – 5 hodín</strong> v závislosti od veľkosti a zložitosti pozemku.\n\n<strong>Termín:</strong> Inštaláciu vieme realizovať do <strong>24 hodín od objednávky</strong>, vrátane sobôt!\n\nStačí zavolať na <a href="tel:+421376423456">037/642 3456</a> alebo vyplniť <a href="#contact">kontaktný formulár</a>.'
+            answer: 'Inštalácia zvyčajne trvá <strong>2 – 5 hodín</strong> v závislosti od veľkosti a zložitosti pozemku.\n\n<strong>Termín:</strong> Inštaláciu vieme realizovať do <strong>24 hodín od objednávky</strong>, vrátane sobôt!\n\nStačí zavolať na <a href="tel:+421907854144">+421 907 854 144</a> alebo vyplniť <a href="#contact">kontaktný formulár</a>.'
         },
         {
             keywords: ['svah', 'kopec', 'strmý', 'strmy', 'sklon'],
@@ -38,7 +38,7 @@
         },
         {
             keywords: ['kontakt', 'telefón', 'telefon', 'email', 'adresa', 'kde', 'otvárac', 'otvarac', 'hodiny'],
-            answer: '<strong>RoboKos s.r.o.</strong>\n\n📍 Továrenská 1404/27, 953 01 Zlaté Moravce\n📞 <a href="tel:+421376423456">037 / 642 3456</a>\n📧 <a href="mailto:info@robokos.sk">info@robokos.sk</a>\n\n<strong>Otváracie hodiny:</strong>\nPo–Pia: 8:00–17:00\nSo: 8:00–12:00'
+            answer: '<strong>RoboKos s.r.o.</strong>\n\n📍 Továrenská 1404/27, 953 01 Zlaté Moravce\n📞 <a href="tel:+421907854144">+421 907 854 144</a>\n📧 <a href="mailto:info@robokos.sk">info@robokos.sk</a>\n\n<strong>Otváracie hodiny:</strong>\nPo–Pia: 8:00–17:00\nSo: 8:00–12:00'
         },
         {
             keywords: ['oblasť', 'oblast', 'región', 'region', 'pôsobnosť', 'posobnost', 'mesto', 'bratislav', 'košic', 'kosic', 'dopravu', 'doprav'],
@@ -54,7 +54,7 @@
         },
         {
             keywords: ['kosačk', 'kosack', 'vlastnú', 'vlastnu', 'kúpiť', 'kupit', 'model', 'odporúč', 'odporuc'],
-            answer: 'Môžete si <strong>priniesť vlastnú kosačku</strong> alebo vám ju <strong>dodáme</strong> — sme autorizovaný predajca Husqvarna a ďalších značiek.\n\nRadi vám poradíme s výberom na základe:\n• Veľkosti záhrady\n• Typu terénu (svah, prekážky)\n• Vášho rozpočtu\n\nStačí sa ozvať na <a href="tel:+421376423456">037/642 3456</a>.'
+            answer: 'Môžete si <strong>priniesť vlastnú kosačku</strong> alebo vám ju <strong>dodáme</strong> — sme autorizovaný predajca Husqvarna a ďalších značiek.\n\nRadi vám poradíme s výberom na základe:\n• Veľkosti záhrady\n• Typu terénu (svah, prekážky)\n• Vášho rozpočtu\n\nStačí sa ozvať na <a href="tel:+421907854144">+421 907 854 144</a>.'
         },
         {
             keywords: ['servis', 'údržb', 'udrzb', 'oprav', 'záruk', 'zaruk', 'nož', 'noz', 'zim'],
@@ -66,7 +66,7 @@
         },
     ];
 
-    const FALLBACK = 'Na túto otázku vám najlepšie odpovieme osobne. Zavolajte nám na <a href="tel:+421376423456">037/642 3456</a> alebo napíšte na <a href="mailto:info@robokos.sk">info@robokos.sk</a>.\n\nMôžete tiež použiť náš <a href="#contact">kontaktný formulár</a> — ozveme sa do 24 hodín.';
+    const FALLBACK = 'Na túto otázku vám najlepšie odpovieme osobne. Zavolajte nám na <a href="tel:+421907854144">+421 907 854 144</a> alebo napíšte na <a href="mailto:info@robokos.sk">info@robokos.sk</a>.\n\nMôžete tiež použiť náš <a href="#contact">kontaktný formulár</a> — ozveme sa do 24 hodín.';
 
     function findAnswer(question) {
         const q = question.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
