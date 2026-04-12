@@ -5,10 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoboKos – Profesionálna inštalácia robotických kosačiek | Zlaté Moravce</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=20">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+
+    <!-- Google Consent Mode v2 — must run BEFORE GTM -->
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Load saved consent or use defaults (denied)
+    var savedConsent = null;
+    try { savedConsent = JSON.parse(localStorage.getItem('robokos_consent')); } catch(e) {}
+
+    var defaultConsent = {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'personalization_storage': 'denied',
+        'security_storage': 'granted',
+        'wait_for_update': 500,
+        'region': ['SK', 'CZ', 'AT', 'HU', 'PL', 'DE', 'EU']
+    };
+
+    if (savedConsent) {
+        // Apply saved consent immediately
+        Object.assign(defaultConsent, savedConsent);
+    }
+
+    gtag('consent', 'default', defaultConsent);
+    gtag('set', 'ads_data_redaction', true);
+    gtag('set', 'url_passthrough', true);
+    </script>
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -711,7 +742,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </svg>
             <span>Robo<strong>Kos</strong></span>
         </a>
-        <p>&copy; 2026 RoboKos s.r.o. Továrenská 1404/27, 953 01 Zlaté Moravce. Všetky práva vyhradené.</p>
+        <p>&copy; 2026 RoboKos s.r.o. Továrenská 1404/27, 953 01 Zlaté Moravce. Všetky práva vyhradené. <a href="#" onclick="event.preventDefault(); window.openCookieSettings && window.openCookieSettings();">Nastavenia cookies</a></p>
     </div>
 </footer>
 
@@ -917,6 +948,177 @@ if (contactForm) {
                 </div>
             `;
         });
+})();
+</script>
+
+<!-- ============================================
+     COOKIE CONSENT BANNER
+     ============================================ -->
+<div class="cookie-banner" id="cookie-banner" hidden>
+    <div class="cookie-content">
+        <div class="cookie-text">
+            <h4>Súbory cookies</h4>
+            <p>Používame cookies na zlepšenie funkčnosti webu, analýzu návštevnosti a marketingové účely. Kliknutím na <strong>"Prijať všetko"</strong> súhlasíte s ich používaním. Viac v <a href="#" id="cookie-settings-link">nastaveniach</a>.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="btn btn-ghost" id="cookie-reject">Odmietnuť</button>
+            <button class="btn btn-ghost" id="cookie-customize">Nastavenia</button>
+            <button class="btn btn-primary" id="cookie-accept-all">Prijať všetko</button>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed cookie settings modal -->
+<div class="cookie-modal" id="cookie-modal" hidden>
+    <div class="cookie-modal-content">
+        <div class="cookie-modal-header">
+            <h3>Nastavenia cookies</h3>
+            <button class="cookie-modal-close" id="cookie-modal-close" aria-label="Zavrieť">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="cookie-modal-body">
+            <p>Vyberte si, ktoré cookies chcete povoliť. Niektoré sú nevyhnutné na fungovanie webu.</p>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <div>
+                        <strong>Nevyhnutné</strong>
+                        <p>Potrebné na fungovanie webu. Nemôžu byť vypnuté.</p>
+                    </div>
+                    <span class="cookie-locked">Vždy aktívne</span>
+                </div>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <div>
+                        <strong>Analytické</strong>
+                        <p>Pomáhajú nám pochopiť, ako návštevníci používajú web (Google Analytics).</p>
+                    </div>
+                    <label class="calc-switch">
+                        <input type="checkbox" id="cookie-analytics">
+                        <span class="calc-switch-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <div>
+                        <strong>Marketingové</strong>
+                        <p>Slúžia na zobrazovanie relevantnej reklamy (Google Ads, remarketing).</p>
+                    </div>
+                    <label class="calc-switch">
+                        <input type="checkbox" id="cookie-marketing">
+                        <span class="calc-switch-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="cookie-modal-footer">
+            <button class="btn btn-ghost" id="cookie-modal-reject">Odmietnuť všetko</button>
+            <button class="btn btn-primary" id="cookie-modal-save">Uložiť nastavenia</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+    const STORAGE_KEY = 'robokos_consent';
+
+    function getSavedConsent() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) { return null; }
+    }
+
+    function saveConsent(consent) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+        // Update Google Consent Mode
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', consent);
+        }
+        // Push event for GTM
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            event: 'consent_update',
+            consent_analytics: consent.analytics_storage,
+            consent_marketing: consent.ad_storage
+        });
+    }
+
+    function acceptAll() {
+        const consent = {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted',
+            'functionality_storage': 'granted',
+            'personalization_storage': 'granted',
+            'security_storage': 'granted'
+        };
+        saveConsent(consent);
+        banner.hidden = true;
+        modal.hidden = true;
+    }
+
+    function rejectAll() {
+        const consent = {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'granted',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted'
+        };
+        saveConsent(consent);
+        banner.hidden = true;
+        modal.hidden = true;
+    }
+
+    function saveCustom() {
+        const analytics = document.getElementById('cookie-analytics').checked;
+        const marketing = document.getElementById('cookie-marketing').checked;
+        const consent = {
+            'ad_storage': marketing ? 'granted' : 'denied',
+            'ad_user_data': marketing ? 'granted' : 'denied',
+            'ad_personalization': marketing ? 'granted' : 'denied',
+            'analytics_storage': analytics ? 'granted' : 'denied',
+            'functionality_storage': 'granted',
+            'personalization_storage': analytics ? 'granted' : 'denied',
+            'security_storage': 'granted'
+        };
+        saveConsent(consent);
+        banner.hidden = true;
+        modal.hidden = true;
+    }
+
+    function openModal() {
+        const saved = getSavedConsent();
+        if (saved) {
+            document.getElementById('cookie-analytics').checked = saved.analytics_storage === 'granted';
+            document.getElementById('cookie-marketing').checked = saved.ad_storage === 'granted';
+        }
+        modal.hidden = false;
+    }
+
+    // Show banner if no consent saved yet
+    if (!getSavedConsent()) {
+        setTimeout(() => { banner.hidden = false; }, 800);
+    }
+
+    document.getElementById('cookie-accept-all').addEventListener('click', acceptAll);
+    document.getElementById('cookie-reject').addEventListener('click', rejectAll);
+    document.getElementById('cookie-customize').addEventListener('click', openModal);
+    document.getElementById('cookie-settings-link').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    document.getElementById('cookie-modal-close').addEventListener('click', () => { modal.hidden = true; });
+    document.getElementById('cookie-modal-reject').addEventListener('click', rejectAll);
+    document.getElementById('cookie-modal-save').addEventListener('click', saveCustom);
+
+    // Expose API to reopen settings later (e.g., from footer link)
+    window.openCookieSettings = openModal;
 })();
 </script>
 
