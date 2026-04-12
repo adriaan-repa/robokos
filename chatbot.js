@@ -38,7 +38,7 @@
         },
         {
             keywords: ['kontakt', 'telefón', 'telefon', 'email', 'adresa', 'kde', 'otvárac', 'otvarac', 'hodiny'],
-            answer: '<strong>PROTECHNIK s.r.o.</strong>\n\n📍 Továrenská 1404/27, 953 01 Zlaté Moravce\n📞 <a href="tel:+421907854144">+421 907 854 144</a>\n📧 <a href="mailto:info@robokos.sk">info@robokos.sk</a>\n\n<strong>Otváracie hodiny:</strong>\nPo–Pia: 8:00–17:00\nSo: 8:00–12:00'
+            answer: '<strong>PROTECHNIK s.r.o.</strong>\n\n📍 Továrenská 27, 953 01 Zlaté Moravce\n📞 <a href="tel:+421907854144">+421 907 854 144</a>\n📧 <a href="mailto:info@robokos.sk">info@robokos.sk</a>\n\n<strong>Otváracie hodiny:</strong>\nPo–Pia: 8:00–17:00\nSo: 8:00–12:00'
         },
         {
             keywords: ['oblasť', 'oblast', 'región', 'region', 'pôsobnosť', 'posobnost', 'mesto', 'bratislav', 'košic', 'kosic', 'dopravu', 'doprav'],
